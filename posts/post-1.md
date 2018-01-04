@@ -1,0 +1,14 @@
+title: if let
+label: if_let
+
+---
+
+if let is cleaner for this use case and in addition allows various failure options to be specified:
+
+```
+// The `if let` construct reads: "if `let` destructures `number` into
+// `Some(i)`, evaluate the block (`{}`).
+if let Some(i) = number {
+    println!("Matched {:?}!", i);
+}
+```

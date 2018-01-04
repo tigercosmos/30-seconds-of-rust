@@ -1,0 +1,4 @@
+/_site/*
+!/_site/css/
+!/_site/js/
+.DS_store

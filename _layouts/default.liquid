@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>30 Seconds of Rust</title>
+
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <link href="css/simple-sidebar.css" rel="stylesheet">
+  <link href="css/highlight.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+  <div id="wrapper">
+
+    <!-- Sidebar -->
+    <div id="sidebar-wrapper">
+      <ul class="sidebar-nav">
+        <li class="sidebar-brand">
+          <a href="#">
+            30s of Rust
+          </a>
+        </li>
+        {% for post in posts %}
+        <li>
+          <a href="#{{ post.label }}" onclick="scrollToTarget('{{ post.label }}')">{{ post.title }}</a>
+        </li>
+        {% endfor %}
+      </ul>
+    </div>
+    <!-- /#sidebar-wrapper -->
+
+    <!-- Page Content -->
+    <div id="page-content-wrapper">
+      <div class="jumbotron">
+        <h1>30 Seconds of Rust</h1>
+        <p>
+          Curated collection of useful Rust snippets that you can understand in
+          30 seconds or less.
+        </p>
+        <a href="#menu-toggle" class="btn btn-secondary" id="menu-toggle">Toggle Menu</a>
+      </div>
+      <div class="container-fluid">
+        {% for post in posts %}
+        <div id="{{post.label}}">
+          <h2> {{post.title}} </h2>
+          <div>
+            {{ post.content }}
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+    <!-- /#page-content-wrapper -->
+
+  </div>
+  <!-- /#wrapper -->
+
+  <!-- Bootstrap core JavaScript -->
+  <script src="js/jquery.min.js"></script>
+  <script src="js/highlight.pack.js"></script>
+
+  <!-- Menu Toggle Script -->
+  <script>
+    $(document).ready(function () {
+      $('pre code').each(function (i, block) {
+        hljs.highlightBlock(block);
+      });
+    });
+    $("#menu-toggle").click(function (e) {
+      e.preventDefault();
+      $("#wrapper").toggleClass("toggled");
+    });
+
+    function scrollToTarget(target) {
+      $('html, body').animate({
+        scrollTop: $('#' + target).offset().top
+      }, 900);
+    }
+  </script>
+
+</body>
+
+</html>
