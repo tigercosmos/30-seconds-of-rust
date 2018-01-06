@@ -42,8 +42,7 @@
       <div class="jumbotron">
         <h1>30 Seconds of Rust</h1>
         <p>
-          Curated collection of useful Rust snippets that you can understand in
-          30 seconds or less.
+          Curated collection of useful Rust snippets that you can understand in 30 seconds or less.
         </p>
         <a href="#menu-toggle" class="btn btn-secondary" id="menu-toggle">Toggle Menu</a>
       </div>
@@ -51,6 +50,7 @@
         {% for post in posts %}
         <div id="{{post.label}}">
           <h2> {{post.title}} </h2>
+          <p><code> {{post.category}} </code></p>
           <div>
             {{ post.content }}
           </div>

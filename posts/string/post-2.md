@@ -1,5 +1,6 @@
 title: Nesting and labels
 label: nesting_and_labels
+category: string
 
 ---
 
