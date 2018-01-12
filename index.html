@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>30 Seconds of Rust</title>
+
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <link href="css/simple-sidebar.css" rel="stylesheet">
+  <link href="css/highlight.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+  <div id="wrapper">
+
+    <!-- Sidebar -->
+    <div id="sidebar-wrapper">
+      <ul class="sidebar-nav">
+        <li class="sidebar-brand">
+          <a href="#">
+            30s of Rust
+          </a>
+        </li>
+        
+        <li>
+          <a href="#if_let" onclick="scrollToTarget('if_let')">if let</a>
+        </li>
+        
+        <li>
+          <a href="#nesting_and_labels" onclick="scrollToTarget('nesting_and_labels')">Nesting and labels</a>
+        </li>
+        
+      </ul>
+    </div>
+    <!-- /#sidebar-wrapper -->
+
+    <!-- Page Content -->
+    <div id="page-content-wrapper">
+      <div class="jumbotron">
+        <h1>30 Seconds of Rust</h1>
+        <p>
+          Curated collection of useful Rust snippets that you can understand in 30 seconds or less.
+        </p>
+        <a href="#menu-toggle" class="btn btn-secondary" id="menu-toggle">Toggle Menu</a>
+      </div>
+      <div class="container-fluid">
+        
+        <div id="if_let">
+          <h2> if let </h2>
+          <p><code> math </code></p>
+          <div>
+            <p>if let is cleaner for this use case and in addition allows various failure options to be specified:</p>
+<pre style="background-color:#2b303b">
+<span style="background-color:#2b303b;color:#65737e;">//</span><span style="background-color:#2b303b;color:#65737e;"> The `if let` construct reads: &quot;if `let` destructures `number` into
+</span><span style="background-color:#2b303b;color:#65737e;">//</span><span style="background-color:#2b303b;color:#65737e;"> `Some(i)`, evaluate the block (`{}`).
+</span><span style="background-color:#2b303b;color:#b48ead;">if</span><span style="background-color:#2b303b;color:#c0c5ce;"> </span><span style="background-color:#2b303b;color:#b48ead;">let</span><span style="background-color:#2b303b;color:#c0c5ce;"> </span><span style="background-color:#2b303b;color:#c0c5ce;">Some</span><span style="background-color:#2b303b;color:#c0c5ce;">(</span><span style="background-color:#2b303b;color:#c0c5ce;">i</span><span style="background-color:#2b303b;color:#c0c5ce;">)</span><span style="background-color:#2b303b;color:#c0c5ce;"> </span><span style="background-color:#2b303b;color:#c0c5ce;">=</span><span style="background-color:#2b303b;color:#c0c5ce;"> number </span><span style="background-color:#2b303b;color:#c0c5ce;">{</span><span style="background-color:#2b303b;color:#c0c5ce;">
+</span><span style="background-color:#2b303b;color:#c0c5ce;">    </span><span style="background-color:#2b303b;color:#c0c5ce;">println!</span><span style="background-color:#2b303b;color:#c0c5ce;">(</span><span style="background-color:#2b303b;color:#c0c5ce;">&quot;</span><span style="background-color:#2b303b;color:#a3be8c;">Matched </span><span style="background-color:#2b303b;color:#d08770;">{:?}</span><span style="background-color:#2b303b;color:#a3be8c;">!</span><span style="background-color:#2b303b;color:#c0c5ce;">&quot;</span><span style="background-color:#2b303b;color:#c0c5ce;">,</span><span style="background-color:#2b303b;color:#c0c5ce;"> i</span><span style="background-color:#2b303b;color:#c0c5ce;">)</span><span style="background-color:#2b303b;color:#c0c5ce;">;</span><span style="background-color:#2b303b;color:#c0c5ce;">
+</span><span style="background-color:#2b303b;color:#c0c5ce;">}</span><span style="background-color:#2b303b;color:#c0c5ce;">
+</span></pre>
+          </div>
+        </div>
+        
+        <div id="nesting_and_labels">
+          <h2> Nesting and labels </h2>
+          <p><code> string </code></p>
+          <div>
+            <p>It's possible to break or continue outer loops when dealing with nested loops. In these cases, the loops must be annotated with some 'label, and the label must be passed to the break/continue statement.</p>
+<pre style="background-color:#2b303b">
+<span style="background-color:#2b303b;color:#c0c5ce;">#!</span><span style="background-color:#2b303b;color:#c0c5ce;">[</span><span style="background-color:#2b303b;color:#bf616a;">allow</span><span style="background-color:#2b303b;color:#c0c5ce;">(</span><span style="background-color:#2b303b;color:#c0c5ce;">unreachable_code</span><span style="background-color:#2b303b;color:#c0c5ce;">)</span><span style="background-color:#2b303b;color:#c0c5ce;">]</span><span style="background-color:#2b303b;color:#c0c5ce;">
+</span><span style="background-color:#2b303b;color:#c0c5ce;">
+</span><span style="background-color:#2b303b;color:#b48ead;">fn</span><span style="background-color:#2b303b;color:#c0c5ce;"> </span><span style="background-color:#2b303b;color:#8fa1b3;">main</span><span style="background-color:#2b303b;color:#c0c5ce;">(</span><span style="background-color:#2b303b;color:#c0c5ce;">)</span><span style="background-color:#2b303b;color:#c0c5ce;"> </span><span style="background-color:#2b303b;color:#c0c5ce;">{</span><span style="background-color:#2b303b;color:#c0c5ce;">
+</span><span style="background-color:#2b303b;color:#c0c5ce;">    </span><span style="background-color:#2b303b;color:#c0c5ce;">&#39;outer</span><span style="background-color:#2b303b;color:#c0c5ce;">:</span><span style="background-color:#2b303b;color:#c0c5ce;"> </span><span style="background-color:#2b303b;color:#b48ead;">loop</span><span style="background-color:#2b303b;color:#c0c5ce;"> </span><span style="background-color:#2b303b;color:#c0c5ce;">{</span><span style="background-color:#2b303b;color:#c0c5ce;">
+</span><span style="background-color:#2b303b;color:#c0c5ce;">        </span><span style="background-color:#2b303b;color:#c0c5ce;">println!</span><span style="background-color:#2b303b;color:#c0c5ce;">(</span><span style="background-color:#2b303b;color:#c0c5ce;">&quot;</span><span style="background-color:#2b303b;color:#a3be8c;">Entered the outer loop</span><span style="background-color:#2b303b;color:#c0c5ce;">&quot;</span><span style="background-color:#2b303b;color:#c0c5ce;">)</span><span style="background-color:#2b303b;color:#c0c5ce;">;</span><span style="background-color:#2b303b;color:#c0c5ce;">
+</span><span style="background-color:#2b303b;color:#c0c5ce;">
+</span><span style="background-color:#2b303b;color:#c0c5ce;">        </span><span style="background-color:#2b303b;color:#c0c5ce;">&#39;inner</span><span style="background-color:#2b303b;color:#c0c5ce;">:</span><span style="background-color:#2b303b;color:#c0c5ce;"> </span><span style="background-color:#2b303b;color:#b48ead;">loop</span><span style="background-color:#2b303b;color:#c0c5ce;"> </span><span style="background-color:#2b303b;color:#c0c5ce;">{</span><span style="background-color:#2b303b;color:#c0c5ce;">
+</span><span style="background-color:#2b303b;color:#c0c5ce;">            </span><span style="background-color:#2b303b;color:#c0c5ce;">println!</span><span style="background-color:#2b303b;color:#c0c5ce;">(</span><span style="background-color:#2b303b;color:#c0c5ce;">&quot;</span><span style="background-color:#2b303b;color:#a3be8c;">Entered the inner loop</span><span style="background-color:#2b303b;color:#c0c5ce;">&quot;</span><span style="background-color:#2b303b;color:#c0c5ce;">)</span><span style="background-color:#2b303b;color:#c0c5ce;">;</span><span style="background-color:#2b303b;color:#c0c5ce;">
+</span><span style="background-color:#2b303b;color:#c0c5ce;">
+</span><span style="background-color:#2b303b;color:#c0c5ce;">            </span><span style="background-color:#2b303b;color:#65737e;">//</span><span style="background-color:#2b303b;color:#65737e;"> This would break only the inner loop
+</span><span style="background-color:#2b303b;color:#c0c5ce;">            </span><span style="background-color:#2b303b;color:#65737e;">//</span><span style="background-color:#2b303b;color:#65737e;">break;
+</span><span style="background-color:#2b303b;color:#c0c5ce;">
+</span><span style="background-color:#2b303b;color:#c0c5ce;">            </span><span style="background-color:#2b303b;color:#65737e;">//</span><span style="background-color:#2b303b;color:#65737e;"> This breaks the outer loop
+</span><span style="background-color:#2b303b;color:#c0c5ce;">            </span><span style="background-color:#2b303b;color:#b48ead;">break</span><span style="background-color:#2b303b;color:#c0c5ce;"> </span><span style="background-color:#2b303b;color:#b48ead;">&#39;outer</span><span style="background-color:#2b303b;color:#c0c5ce;">;</span><span style="background-color:#2b303b;color:#c0c5ce;">
+</span><span style="background-color:#2b303b;color:#c0c5ce;">        </span><span style="background-color:#2b303b;color:#c0c5ce;">}</span><span style="background-color:#2b303b;color:#c0c5ce;">
+</span><span style="background-color:#2b303b;color:#c0c5ce;">
+</span><span style="background-color:#2b303b;color:#c0c5ce;">        </span><span style="background-color:#2b303b;color:#c0c5ce;">println!</span><span style="background-color:#2b303b;color:#c0c5ce;">(</span><span style="background-color:#2b303b;color:#c0c5ce;">&quot;</span><span style="background-color:#2b303b;color:#a3be8c;">This point will never be reached</span><span style="background-color:#2b303b;color:#c0c5ce;">&quot;</span><span style="background-color:#2b303b;color:#c0c5ce;">)</span><span style="background-color:#2b303b;color:#c0c5ce;">;</span><span style="background-color:#2b303b;color:#c0c5ce;">
+</span><span style="background-color:#2b303b;color:#c0c5ce;">    </span><span style="background-color:#2b303b;color:#c0c5ce;">}</span><span style="background-color:#2b303b;color:#c0c5ce;">
+</span><span style="background-color:#2b303b;color:#c0c5ce;">
+</span><span style="background-color:#2b303b;color:#c0c5ce;">    </span><span style="background-color:#2b303b;color:#c0c5ce;">println!</span><span style="background-color:#2b303b;color:#c0c5ce;">(</span><span style="background-color:#2b303b;color:#c0c5ce;">&quot;</span><span style="background-color:#2b303b;color:#a3be8c;">Exited the outer loop</span><span style="background-color:#2b303b;color:#c0c5ce;">&quot;</span><span style="background-color:#2b303b;color:#c0c5ce;">)</span><span style="background-color:#2b303b;color:#c0c5ce;">;</span><span style="background-color:#2b303b;color:#c0c5ce;">
+</span><span style="background-color:#2b303b;color:#c0c5ce;">}</span><span style="background-color:#2b303b;color:#c0c5ce;">
+</span></pre>
+          </div>
+        </div>
+        
+      </div>
+    </div>
+    <!-- /#page-content-wrapper -->
+
+  </div>
+  <!-- /#wrapper -->
+
+  <!-- Bootstrap core JavaScript -->
+  <script src="js/jquery.min.js"></script>
+  <script src="js/highlight.pack.js"></script>
+
+  <!-- Menu Toggle Script -->
+  <script>
+    $(document).ready(function () {
+      $('pre code').each(function (i, block) {
+        hljs.highlightBlock(block);
+      });
+    });
+    $("#menu-toggle").click(function (e) {
+      e.preventDefault();
+      $("#wrapper").toggleClass("toggled");
+    });
+
+    function scrollToTarget(target) {
+      $('html, body').animate({
+        scrollTop: $('#' + target).offset().top
+      }, 900);
+    }
+  </script>
+
+</body>
+
+</html>
